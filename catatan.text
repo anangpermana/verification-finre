@@ -1,0 +1,15 @@
+//buat user & grand mongodb
+1. hostname$ mongosh
+> use nama_db
+nama_db >  db.createUser({ user: "anang", pwd: "anang123", roles: [ { role: "dbAdmin", db: "nama_db" } ] })
+
+2. edit /etc/mongod.conf
+uncomment
+security:
+    authorization: enabled
+
+3. restart sudo service mongod restart
+4. cek auth
+nama_db > db.auth("anang", "anang123")
+
+url_db: mongodb://anangp:anang123@127.0.0.1:27017/finre
