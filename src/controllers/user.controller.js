@@ -51,6 +51,15 @@ const verification = async(req, res) => {
   // res.status(200).json(code)
 }
 
+const getAll = async (req, res) => {
+  try {
+    const data = await User.find();
+    res.status(200).json({status:true, data:data})
+  } catch (error) {
+    res.status(400).json({message: error.message})
+    
+  }
+}
 const user = (req, res) => {
     User.find()
     .then(result => res.status(200).json({result}))
@@ -59,5 +68,6 @@ const user = (req, res) => {
 module.exports = {
     create,
     verification,
-    user
+    user,
+    getAll
 }
